@@ -3,9 +3,22 @@
   <head>
     <link rel="stylesheet" href="style.css" />
     <title>My Phase 1 Project</title>
+    <link rel="icon" href="https://www.openbrewerydb.org/favicon.png" />
   </head>
   <body>
-    <h1>Hello World!</h1>
+    <div id="main">
+      <h1>HopsFinder &#127866;</h1>
+      <h2>Brewery Search By State</h2>
+      <form id="brewery-form">
+        <input id="search" type="text" name="search" />
+        <input type="submit" name="submit" />
+      </form>
+
+      <div id="brewery-container">
+        <ul id="breweries-list"></ul>
+        <ul id="brewery-info"></ul>
+      </div>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>
