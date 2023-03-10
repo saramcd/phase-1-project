@@ -5,3 +5,12 @@ body {
 body {
   font-family: "Courier New", Courier, monospace;
 }
+
+#breweries-list {
+  width: 500px;
+  float: left;
+}
+#brewery-info {
+  width: 500px;
+  float: right;
+}
