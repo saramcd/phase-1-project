@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
   const breweryForm = document.getElementById("brewery-form");
-  let cleared = true;
   breweryForm.addEventListener("submit", (event) => {
     event.preventDefault();
     const searchFormInput = document.querySelector("input#search").value;
@@ -8,19 +7,24 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   const getBreweries = (state) => {
-    const bLi = document.getElementById("breweries-list");
-    bLi.innerHTML = "";
-    const bIli = document.getElementById("brewery-info");
-    bIli.innerHTML = "";
+    // Clear results from the prior search
+    const breweryElement = document.getElementById("breweries-list");
+    breweryElement.innerHTML = "";
+    const breweryInfoElement = document.getElementById("brewery-info");
+    breweryInfoElement.innerHTML = "";
+    const clickForInfoElement = document.createElement("p");
+    clickForInfoElement.innerText = "Click a brewery for more information.";
+    breweryForm.appendChild(clickForInfoElement);
+    // Fetch brewery data by state
     fetch(
       `https://api.openbrewerydb.org/breweries?by_state=${state}&per_page=200`
     )
       .then((resp) => resp.json())
       .then((data) => {
-        const breweryElement = document.getElementById("breweries-list");
-        const h3 = document.createElement("h3");
-        h3.innerText = state;
-        breweryElement.append(h3);
+        // Populate HTML with requested state brewery data
+        const stateHeader = document.createElement("h3");
+        stateHeader.innerText = state;
+        breweryElement.append(stateHeader);
         data.forEach((brewery) => {
           const li = document.createElement("li");
           li.innerText = brewery.name;
@@ -30,7 +34,6 @@ document.addEventListener("DOMContentLoaded", () => {
             const breweryData = data.filter(function (brewery) {
               return brewery.name == breweryClicked;
             });
-            const breweryInfoElement = document.getElementById("brewery-info");
             const h2 = document.createElement("h2");
             breweryInfoElement.append(h2);
             h2.innerText = breweryClicked;
