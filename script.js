@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const breweryForm = document.getElementById("brewery-form");
   breweryForm.addEventListener("submit", (event) => {
+    // Prevents form from reloading when submitted
     event.preventDefault();
     const searchFormInput = document.querySelector("input#search").value;
     getBreweries(searchFormInput);
