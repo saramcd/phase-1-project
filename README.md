@@ -7,7 +7,7 @@ within the US.
 
 ## Features
 
-- **Search by state**
+- **Search by State**
 
   Enter any state within the US into the form to see a list of breweries. The search is case insensitive.
   If you search for another state, the results from the prior search will be cleared from the page.
